@@ -1,28 +1,18 @@
-name: Compile Sketch
-
-# The workflow will run on every push and pull request to the repository
-on:
-  - push
-  - pull_request
-
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
-  compile-sketch:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-
     steps:
-      # This step makes the contents of the repository available to the workflow
-      - name: Checkout repository
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v5
-
-      # For more information: https://github.com/arduino/compile-sketches#readme
-      - name: Compile sketch
-        uses: arduino/compile-sketches@v1
-        with:
-          # The default is to compile for the Arduino Uno board. If you want to compile for other boards, use the `fqbn` input.
-          sketch-paths: |
-            # Configure the action to search all folders under the root of the repository for sketches and compile them.
-            # This is formatted as a YAML list, which makes it possible to have multiple sketch paths if needed.
-            - ./
-          libraries: |
-            # The "blink" sketch being compiled in this demo doesn't use any libraries, so just use an empty list
-            -
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
