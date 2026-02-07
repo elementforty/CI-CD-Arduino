@@ -1,0 +1,23 @@
+name: Arduino CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
+
+      - name: Instalar plataforma (ej. Arduino Uno)
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Compilar Sketch
+        run: |
+          arduino-cli compile --fqbn arduino:avr:uno ./main.ino
