@@ -1,5 +1,5 @@
 echo Compile....
-arduino-cli compile --fqbn arduino:avr:uno CI-CD-Arduino
+arduino-cli compile --fqbn arduino:avr:uno CI-CD-Arduino.ino
 
 echo install....
-arduino-cli upload -p COM4 --fqbn arduino:avr:uno CI-CD-Arduino
+arduino-cli upload -p COM4 --fqbn arduino:avr:uno CI-CD-Arduino.ino
