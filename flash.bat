@@ -1,5 +1,5 @@
 echo Compile....
-arduino-cli compile --fqbn arduino:avr:uno CI-CD-Arduino.ino
+arduino-cli compile --clean --fqbn arduino:avr:uno CI-CD-Arduino.ino
 
 echo Install....
 arduino-cli core install arduino:avr
